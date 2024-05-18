@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My Chemical Romance</title>
+        <meta name="description" content="Интерактивное руководство по началу работы в Brackets.">
+            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="mcr.css">
+    </head>
+    <body>
+            <a href="https://ozon.ru/t/gGKR1oz">
+  <div class="banner">
+
+
+          <div class="container1">
+              <p>Товар</p>
+<ul class="alternate" style="padding: 0;
+  list-style: none;
+  ">
+  <li style="  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  margin-right: 10px; 
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);"><img src=i.webp ></li>
+  <li style="  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  margin-right: 10px; 
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);"><img src=screenshots/1.jpg ></li>
+  <li style="  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  margin-right: 10px; 
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);"><img src="screenshots/2.jpg" alt="Картинка 3"></li>
+  <li style="  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  margin-right: 10px; 
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);"><img src="screenshots/3.jpg" alt="Картинка 4"></li>
+  <li style="  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  margin-right: 10px; 
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);"><img src="screenshots/4.jpg" alt="Картинка 5"></li>   
+    
+</ul>
+        
+</div>
+  </div>
+</a>
+
+        
+        		<h3>Альбомы группы</h3>
+        <h3>1-й альбом </h3>
+		<p>
+			Первой исполненной песней стала «Skylines and Turnstiles», которую Джерард написал после терактов 11 сентября. Уже в 2002 году группа выпускает дебютный альбом «I Brought You My Bullets, You Brought Me Your Love».
+		</p>
+        <a href="screenshots/1.jpg">
+			<img alt="A screenshot showing CSS Quick Edit" src="screenshots/1.jpg" />
+		</a>
+        <h3>2-й альбом </h3>
+		<p>
+			В 2002 году группа выпускает дебютный альбом «I Brought You My Bullets, You Brought Me Your Love». Второй альбом «Three Cheers for Sweet Revenge» приносит коммерческий успех и платиновый статус.
+		</p>
+        <a href="screenshots/2.jpg">
+			<img alt="A screenshot showing CSS Quick Edit" src="screenshots/2.jpg" />
+		</a>
+		<h3>3-й альбом</h3>
+		<p>
+		   Cамым известным становится третий альбом группы «The Black Parade», вышедший в 2006 году и ставший любимчиком среди приверженцев эмо-культуры (хотя Джерард не раз высказывался, что ему это не очень нравится).
+		</p>
+                <a href="screenshots/3.jpg">
+			<img alt="A screenshot showing CSS Quick Edit" src="screenshots/3.jpg" />
+		</a>
+        		<h3>4-й альбом</h3>
+		<p>
+		   Два платиновых статуса, всемирная известность и море поклонников вдохновили музыкантов продолжать, поэтому в ноябре 2010 года вышел четвёртый студийный альбом «Danger Days: The True Lives of the Fabulous Killjoys».
+		</p>
+                <a href="screenshots/4.jpg">
+			<img alt="A screenshot showing CSS Quick Edit" src="screenshots/4.jpg" />
+		</a>
+        
+				
+		<h3>Распад группы</h3>
+		<p>
+			Премьерные показы клипов на MTV, создание саундтрека для третьих «Трансформеров», большой тур The World Contamination Tour. Казалось бы, что ещё нужно? Однако 22 марта 2013 года группа объявила о своём распаде
+		</p>
+        <div class="main">
+        <div class="scroller">
+            <div class="item">
+                <img src="screenshots/1.jpg" alt="mcr1">
+                <div class="card">
+                </div>
+            </div>
+            <div class="item">
+                <img src="screenshots/2.jpg" alt="mcr2">
+                <div class="card">
+                </div>
+            </div>
+            <div class="item">
+                <img src="screenshots/3.jpg" alt="mcr3">
+                <div class="card">
+                </div>
+            </div>
+            <div class="item">
+                <img src="screenshots/4.jpg" alt="mcr4">
+                <div class="card">
+                </div>
+             </div>
+             <div class="item">
+                <img src="screenshots/mcr.jpg" alt="mcr5">
+                <div class="card">
+                </div>
+             </div>
+        </div>
+        <span class="btn prev">&lt;</span>
+        <span class="btn next">&gt;</span>
+    </div>
+    <script>
+        const main = document.querySelector('.main');
+        const scroller = main.querySelector('.scroller');
+        const nextBtn = main.querySelector('.btn.next');
+        const prevBtn = main.querySelector('.btn.prev');
+        const itemWidth = main.querySelector('.item').clientWidth;
+
+        nextBtn.addEventListener('click', scrollToNextItem);
+        prevBtn.addEventListener('click', scrollToPrevItem);
+
+        function scrollToNextItem() {
+            if(scroller.scrollLeft < (scroller.scrollWidth - itemWidth))
+                scroller.scrollBy({left: itemWidth, top: 0, behavior:'smooth'});
+            else
+                scroller.scrollTo({left: 0, top: 0, behavior:'smooth'});
+        }
+        function scrollToPrevItem() {
+            if(scroller.scrollLeft != 0)
+                scroller.scrollBy({left: -itemWidth, top: 0, behavior:'smooth'});
+            else
+                scroller.scrollTo({left: scroller.scrollWidth, top: 0, behavior:'smooth'});
+        }
+    </script>
+        
+		<ul>
+			<li><a href="https://dzen.ru/a/X0OM68dM7ReCkHQ7">Статья</a></li>
+			
+		</ul>
+
+        </body>
+</html>

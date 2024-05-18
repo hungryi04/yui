@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<meta name="viewport" content="width=device-width, initialscale=1.0">
+	<title>сайт</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+	<link rel="stylesheet" type="text/css" href="gr2.css">
+	<link href="gr2.css" rel="stylesheet">
+</head>
+<body>
+	<header><h1>Мои любимые группы</h1></header>
+    <div id="wrapper">
+		<ul class="accordion">
+			<li id="one" class="files">
+				<a href="#" class="">Список групп </a>
+				<ul class="sub-menu">
+					<li><a href="#">My chemical romance</a></li>
+					<li><a href="#">David Bowie</a></li>
+					<li><a href="#">Rammstein</a></li>
+					<li><a href="#">Queen</a></li>
+					<li><a href="#">Green day</a></li>
+					<li><a href="#">Pink floyd</a></li>
+				</ul>
+			</li>
+			<li id="two" class="mail">
+				<a href="#" class="">Ссылки которые можно найти на страницах</a>
+				<ul class="sub-menu">
+					<li><a href="mcr.html" >My chemical romance</a></li>
+					<li><a href="bowie.html" >David Bowie</a></li>
+					<li><a href="https://dzen.ru/a/X0OM68dM7ReCkHQ7">Ссылка на статью</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		 var accordion_head = $('.accordion > li > a'),
+		 accordion_body = $('.accordion li > .sub-menu');
+		 accordion_head.first().addClass('active').next().slideDown('normal');
+		 accordion_head.on('click', function(event) {
+		 event.preventDefault();
+		 if ($(this).attr('class') != 'active'){
+		 accordion_body.slideUp('normal');
+		 $(this).next().stop(true,true).slideToggle('normal');
+		 accordion_head.removeClass('active');
+		 $(this).addClass('active');
+		 }
+		 });
+		});
+	</script>
+	<div class="container">
+		<div class="item1">
+			<h2>My chemical romance</h2>
+			<a href="mcr.html"><img src=i.webp  alt="Картинка 1"></a>
+		</div>
+		<div class="item2">
+			<h2>David Bowie</h2>
+			<a href="form.html"><img src=2.jpeg  alt="Картинка 2"></a>
+		</div>
+		<div class="item3">
+			<h2>Rammstein</h2>
+			<img src="3.jpg" alt="Картинка 3">
+		</div>
+		<div class="item4">
+			<h2>Queen</h2>
+			<img src="4.webp" alt="Картинка 4">
+		</div>
+		<div class="item5">
+			<h2>Green day</h2>
+			<img src="5.jpg" alt="Картинка 5">
+		</div>
+		<div class="item6">
+			<h2>Pink floyd</h2>
+			<img src="6.jpg" alt="Картинка 6">
+		</div>
+	</div>
+	<footer>
+		<div class="site-info">
+		<p>Разработано: Пакецки Стас</p>
+		<p>Контакты: Paket782@gmail.com</p>
+		</div>
+	</footer>
+</body>
+</html>

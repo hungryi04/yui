@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="form.css">    
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <script src="feedback-form.js"></script>
+ <title>Форма регистрации</title>
+</head>   
+<body>
+    <h1>Чтобы узнать про связь Дэвида Боуи и салатников, заполните форму.</h1>
+<form id="feedback-form" action="bowie.html" onsubmit="return validateForm()">
+  <label for="first-name">Имя:</label>
+  <input type="text" id="first-name" name="first-name" minlength="3" pattern="[A-Za-zА-Яа-яёЁ]{3,}" required>
+
+  <label for="last-name">Фамилия:</label>
+<input type="text" id="last-name" name="last-name" minlength="3" pattern="[A-Za-zА-Яа-яёЁ\s\-]{3,}" required>
+  <label for="login">Логин:</label>
+  <input type="text" id="login" name="login" minlength="5" maxlength="8" required>
+
+  <label for="phone">Телефон:</label>
+  <input type="tel" id="phone" name="phone" pattern="\+7\d{10}" placeholder="+7XXXXXXXXXX" required>
+
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" placeholder="email@gmail.com" required>
+
+  <label for="password">Пароль:</label>
+  <input type="password" id="password" name="password" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*_).{8,}$" required>
+
+  <label>Пол:</label>
+  <div>
+    <input type="radio" id="male" name="gender" value="male" required>
+    <label for="male">Мужской</label>
+  </div>
+  <div>
+    <input type="radio" id="female" name="gender" value="female" required>
+    <label for="female">Женский</label>
+  </div>
+     <label for="birth-year"><b>Год рождения:</b></label>
+  <br>     
+  <select name="birth-year" id="birth-year" required></select>
+  <br>
+     <script>
+    // Получаем текущий год
+    const currentYear = new Date().getFullYear();
+
+    // Создаем опции для выбора года с 100 лет назад до текущего года
+    for (let year = currentYear - 50; year < currentYear-2; year++) {
+        const option = document.createElement('option');
+        option.text = year;
+        option.value = year;
+        document.getElementById('birth-year').add(option);
+    }
+
+    // Устанавливаем значение по умолчанию - текущий год минус 18 лет
+    document.getElementById('birth-year').value = currentYear - 18;
+</script>
+<button type="submit">Отправить</button>
+</form>
+   <script>
+function validateForm() {
+  const firstNameInput = document.getElementById('first-name');
+  const lastNameInput = document.getElementById('last-name');
+  const loginInput = document.getElementById('login');
+  const phoneInput = document.getElementById('phone');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const genderInputs = document.getElementsByName('gender');
+
+  // Проверяем каждое поле на корректность заполнения
+  if (firstNameInput.value.trim().length < 3 || !/^[A-Za-zА-Яа-яёЁ]+$/.test(firstNameInput.value.trim())) {
+    firstNameInput.setCustomValidity('Введите имя, состоящее только из букв и не менее 3 символов');
+  } else {
+    firstNameInput.setCustomValidity('');
+  }
+
+  if (lastNameInput.value.trim().length < 3 || !/^[A-Za-zА-Яа-яёЁ\s\-]{3,}+$/.test(lastNameInput.value.trim())) {
+    lastNameInput.setCustomValidity('Введите фамилию, состоящую только из букв и не менее 3 символов');
+  } else {
+    lastNameInput.setCustomValidity('');
+  }
+
+  if (loginInput.value.trim().length < 5 || loginInput.value.trim().length > 8) {
+    loginInput.setCustomValidity('Введите логин от 5 до 8 символов');
+  } else {
+    loginInput.setCustomValidity('');
+  }
+
+  if (!/\+7\d{10}/.test(phoneInput.value.trim())) {
+    phoneInput.setCustomValidity('Введите номер телефона в формате +7XXXXXXXXXX');
+  } else {
+    phoneInput.setCustomValidity('');
+  }
+
+  if (emailInput.value.trim() === '') {
+    emailInput.setCustomValidity('Введите e-mail');
+  } else {
+    emailInput.setCustomValidity('');
+  }
+
+  if (passwordInput.value.trim().length < 8 || !/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*_).{8,}/.test(passwordInput.value.trim())) {
+    passwordInput.setCustomValidity('Пароль должен содержать не менее 8 символов и включать верхний и нижний регистры, цифры и знак подчеркивания');
+  } else {
+    passwordInput.setCustomValidity('');
+  }
+
+  if (!Array.from(genderInputs).some(input => input.checked)) {
+    genderInputs[0].setCustomValidity('Выберите пол');
+  } else {
+    genderInputs[0].setCustomValidity('');
+  }
+
+  // Возвращаем true, если все поля заполнены корректно
+  return document.querySelectorAll(':invalid').length === 0;
+}
+</script>
+    
+</body>
+</html>
